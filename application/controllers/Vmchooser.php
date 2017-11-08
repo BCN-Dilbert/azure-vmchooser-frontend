@@ -30,6 +30,7 @@ class Vmchooser extends CI_Controller {
 
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules('inputRegion', 'Azure Region', 'alpha_dash');
+		$this->form_validation->set_rules('inputCurrency', 'Currency', 'alpha_dash');
 		$this->form_validation->set_rules('inputTier', 'VM Tier', 'alpha_dash');
 		$this->form_validation->set_rules('inputAcu', 'ACU Value', 'numeric');
 		$this->form_validation->set_rules('inputHt', 'Hyperthreaded', 'alpha_dash');
@@ -70,6 +71,7 @@ class Vmchooser extends CI_Controller {
 				   //echo "Something went wrong :-(";
 			}
 			$inputRegion = $this->security->xss_clean($_POST["inputRegion"]);
+			$inputCurrency = $this->security->xss_clean($_POST["inputCurrency"]);
 			$inputTier = $this->security->xss_clean($_POST["inputTier"]);
 			$inputAcu = $this->security->xss_clean($_POST["inputAcu"]);
 			$inputHt = $this->security->xss_clean($_POST["inputHt"]);
@@ -95,7 +97,7 @@ class Vmchooser extends CI_Controller {
 			$inputSaps2tier = $this->security->xss_clean($_POST["inputSaps2tier"]);
 			$inputSaps3tier = $this->security->xss_clean($_POST["inputSaps3tier"]);
 			$inputResults = $this->security->xss_clean($_POST["inputResults"]);
-			$querysuffix = "?maxresults=$inputResults&acu=$inputAcu&ht=$inputHt&tier=$inputTier&region=$inputRegion&pcores=$inputPcores&cores=$inputCores&memory=$inputMemory&iops=$inputIops&data=$inputData&temp=$inputTemp&throughput=$inputThroughput&nics=$inputNics&ssd=$ssd&avgcpupeak=$inputAvgcpupeak&avgmempeak=$inputAvgmempeak";
+			$querysuffix = "?maxresults=$inputResults&acu=$inputAcu&ht=$inputHt&tier=$inputTier&region=$inputRegion&pcores=$inputPcores&cores=$inputCores&memory=$inputMemory&iops=$inputIops&data=$inputData&temp=$inputTemp&throughput=$inputThroughput&nics=$inputNics&ssd=$ssd&avgcpupeak=$inputAvgcpupeak&avgmempeak=$inputAvgmempeak&currency=$inputCurrency";
 			
 			if ((!empty($inputSaps2tier) AND !empty(inputSaps3tier)) OR ($hana == Yes)) {
 				$sapsuffix = "&saps2t=$inputSaps2tier&saps3t=$inputMemory&iops=$inputSaps3tier&hana=$hana";

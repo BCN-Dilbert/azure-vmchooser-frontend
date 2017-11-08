@@ -283,6 +283,28 @@ echo form_open(base_url(), $attributes);
 			<input type="text" class="form-control" name="inputResults" id="inputResults" value="<?php echo set_value('inputResults[]'); ?>" placeholder="How many results do you want to see? (Default: 5)" autocomplete="off">
 		  </div>
 		</div>
+		<div class="form-group">
+		  <label class="col-lg-2 control-label">Currency</label>
+		  <div class="col-lg-10">
+			
+			<?php 
+				$currency = array(
+					'EUR' => 'Euro', 
+					'USD' => 'US Dollar', 
+					'GBP' => 'British Pound', 
+					'AUD' => 'Australian Dollar', 
+					'JPY' => 'Japanese Yen', 
+					'CAD' => 'Canadian Dollar', 
+					'DKK' => 'Danish Krone', 
+					'CHF' => 'Swiss Franc', 
+					'SEK' => 'Swedish Krona', 
+					'IDR' => 'Indonesian Rupee', 
+					'INR' => 'Indian Rupee'
+				);
+				echo form_dropdown('inputCurrency', $currency, set_value('inputCurrency[]','EUR'), 'class="form-control" id="inputCurrency"');
+				?>
+		  </div>
+		</div>
 	 </fieldset>
   
   </div>
