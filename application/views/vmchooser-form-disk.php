@@ -23,6 +23,7 @@ if (isset($results)) {
 			'table_open' => '<table class="table table-striped table-hover">'
 	);
 	$CI->table->set_template($template);
+	print_r($results);
 	echo $CI->table->generate($results);
 
 }
