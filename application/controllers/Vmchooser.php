@@ -297,5 +297,85 @@ class Vmchooser extends CI_Controller {
 			$this->load->view('tpl/footer');
 		}
 	}
+
+	public function disk()
+	{
+		
+		$this->load->helper(array('form', 'url'));
+		$this->load->library('appinsight');
+		$telemetryClient = new \ApplicationInsights\Telemetry_Client();
+		$telemetryClient->getContext()->setInstrumentationKey(getenv('APPINSIGHTS_INSTRUMENTATIONKEY'));
+
+		$telemetryClient->trackEvent('Index : Validation');
+
+		$this->load->library('form_validation');
+		$this->form_validation->set_rules('inputRegion', 'Azure Region', 'alpha_dash');
+		$this->form_validation->set_rules('inputCurrency', 'Currency', 'alpha_dash');
+		$this->form_validation->set_rules('inputTier', 'Disk Tier', 'alpha_dash');
+		$this->form_validation->set_rules('inputData', 'Minimum disk capacity (GB)', 'numeric');
+		$this->form_validation->set_rules('inputIops', 'Minimum IOPS (IO/s)', 'numeric');
+		$this->form_validation->set_rules('inputThroughput', 'Minimum throughput / speed (MB/s)', 'numeric');
+
+
+		if ($this->form_validation->run() == FALSE)
+		{
+				// NOK
+				$this->load->view('tpl/header');	
+				$this->load->view('vmchooser-form-disk',$data);
+				$this->load->view('tpl/footer');
+		}
+		else
+		{
+			// Generate Query
+			$this->load->helper('security');
+			$inputRegion = $this->security->xss_clean($_POST["inputRegion"]);
+			$inputCurrency = $this->security->xss_clean($_POST["inputCurrency"]);
+			$inputTier = $this->security->xss_clean($_POST["inputTier"]);;
+			$inputNics = $this->security->xss_clean($_POST["inputNics"]);
+			$inputData = $this->security->xss_clean($_POST["inputData"]);
+			$inputIops = $this->security->xss_clean($_POST["inputIops"]);
+			$inputThroughput = $this->security->xss_clean($_POST["inputThroughput"]);
+
+			$querysuffix = "?tier=$inputTier&region=$inputRegion&iops=$inputIops&data=$inputData&throughput=$inputThroughput";
+			$telemetryClient->trackEvent('Index : API Call');
+			
+			// Do API Call
+			$this->load->library('guzzle');
+			$api_url = getenv('VMCHOOSERAPIDISK').$querysuffix; 
+			
+			$vmchooserapikey = getenv('VMCHOOSERAPIKEY');
+			$client     = new GuzzleHttp\Client(['headers' => ['Ocp-Apim-Subscription-Key' => $vmchooserapikey]]);
+			try {
+				$response = $client->request( 'POST', $api_url);
+				$json =  $response->getBody()->getContents();
+			} catch (GuzzleHttp\Exception\BadResponseException $e) {
+				$response = $e->getResponse();
+				$responseBodyAsString = $response->getBody()->getContents();
+				print_r($responseBodyAsString);
+				echo "Something went wrong :-(";
+			}
+
+			$telemetryClient->trackEvent('Index : Prep Data');
+			
+			// Prep Results
+			$array = json_decode($json);
+			$i=0;
+			foreach ($array as $result) {
+			  $temp = (array) $result;
+			  $results[$i] = $temp;
+			  $i++;
+			}
+
+			$telemetryClient->trackEvent('Index : Load Page');
+		
+			// OK
+			$data['results'] = $results;
+			$this->load->view('tpl/header');	
+			$this->load->view('vmchooser-form-disk',$data);
+			$this->load->view('tpl/footer');
+			
+			$telemetryClient->flush();
+		}
+	}
 	
 }

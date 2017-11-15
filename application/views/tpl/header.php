@@ -26,6 +26,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       <ul class="nav navbar-nav">
         <li><a href="<?php echo base_url()."vmchooser/"; ?>">Search</a></li>
       </ul>
+      <ul class="nav navbar-nav">
+        <li><a href="<?php echo base_url()."vmchooser/disk/"; ?>">Disk Config</a></li>
+      </ul>
 	    <ul class="nav navbar-nav">
         <li><a href="<?php echo base_url()."vmchooser/csv/"; ?>">CSV Upload</a></li>
       </ul>
