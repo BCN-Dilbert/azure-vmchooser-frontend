@@ -26,7 +26,7 @@ if (isset($results)) {
 	print_r($results);
 
 	foreach ($results as $key => $value) {
-    $this->table->add_row($key,$value);
+    $CI->table->add_row($key,$value);
   }
 
 	echo $CI->table->generate();
