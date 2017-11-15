@@ -170,9 +170,9 @@ echo form_open(base_url(), $attributes);
 	<fieldset>
 		<legend>Options to tweak the results</legend>
 		<div class="form-group">
-		  <label for="inputResults" class="col-lg-2 control-label">Maximum Results</label>
+		  <label for="inputResults" class="col-lg-2 control-label">Maximum Disks</label>
 		  <div class="col-lg-10">
-			<input type="text" class="form-control" name="inputResults" id="inputResults" value="<?php echo set_value('inputResults[]'); ?>" placeholder="How many results do you want to see? (Default: 5)" autocomplete="off">
+			<input type="text" class="form-control" name="inputMaxDisks" id="inputMaxDisks" value="<?php echo set_value('inputMaxDisks[]'); ?>" placeholder="What is the maximum disks you want to use" autocomplete="off">
 		  </div>
 		</div>
 		<div class="form-group">
