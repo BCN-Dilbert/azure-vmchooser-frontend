@@ -172,7 +172,7 @@ echo form_open(base_url()."vmchooser/disk", $attributes);
 		<div class="form-group">
 		  <label for="inputResults" class="col-lg-2 control-label">Maximum Disks</label>
 		  <div class="col-lg-10">
-			<input type="text" class="form-control" name="inputMaxDisks" id="inputMaxDisks" value="<?php echo set_value('inputMaxDisks[]'); ?>" placeholder="What is the maximum disks you want to use" autocomplete="off">
+			<input type="text" class="form-control" name="inputMaxDisks" id="inputMaxDisks" value="<?php echo set_value('inputMaxDisks[]','64'); ?>" placeholder="What is the maximum disks you want to use" autocomplete="off">
 		  </div>
 		</div>
 		<div class="form-group">
