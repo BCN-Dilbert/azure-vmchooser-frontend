@@ -23,28 +23,9 @@ if (isset($results)) {
 			'table_open' => '<table class="table table-striped table-hover">'
 	);
 	$CI->table->set_template($template);
-
-	$first = true;
+	print_r($results);
 	foreach ($results as $result) {
-		$data = array();
-		foreach($result as $key => $value) {
-			$header[] = str_replace("'", "", $key);
-			$key = str_replace("'", "", $key);
-			if ($key == "Name") {
-				$value = '<a href="' . base_url() . 'vmchooser/vmsize/' . $value . '/">' . $value . '</a>';
-			}
-			if (strpos($key, 'USD') !== FALSE) {
-				$value = '<a href="https://www.bing.com/search?q='.$value.'+USD+to+euro">'.$value.'</a>';
-			}
-			$value = str_replace("-1", "n/a", $value);
-			$value = str_replace("-2", "Not Supported", $value);
-			$data[] = $value;
-		}
-		if ($first) {
-			$CI->table->set_heading($header);
-		}
-		$CI->table->add_row($data);
-		$first = false;
+		print_r($result);
 	}
 	echo $CI->table->generate();
 
