@@ -373,7 +373,7 @@ class Vmchooser extends CI_Controller {
 			$telemetryClient->trackEvent('Index : Prep Data');
 			
 			// Prep Results
-			$results = json_decode($json);
+			$results = json_decode($json,TRUE);
 			print_r($results);
 
 			$telemetryClient->trackEvent('Index : Load Page');
