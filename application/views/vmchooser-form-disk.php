@@ -55,50 +55,6 @@ echo form_open(base_url()."vmchooser/disk", $attributes);
 	<fieldset>
 		<legend>Basic requirements for your virtual machine</legend>
 		<div class="form-group">
-		  <label class="col-lg-2 control-label">Region</label>
-		  <div class="col-lg-10">
-			
-			<?php 
-				$regions = array(
-					'asia-pacific-east' => 'Asia Pacific East', 
-					'asia-pacific-southeast' => 'Asia Pacific South-East', 
-					'australia-east' => 'Australia East', 
-					'australia-southeast' => 'Australia South East',	
-					'brazil-south' => 'Brazil South',	
-					'canada-central' => 'Canada Central',	
-					'canada-east' => 'Canada East', 
-					'central-india' => 'India Central', 
-					'west-india' => 'India West',
-					'south-india' => 'India South',
-					'europe-north' => 'Europe North',	
-					'europe-west' => 'Europe West', 
-					'germany-central' => 'Germany Central', 
-					'germany-northeast' => 'Germany North East', 
-					'japan-east' => 'Japan East', 
-					'japan-west' => 'Japan West', 
-					'korea-central' => 'Korea Central', 
-					'korea-south' => 'Korea South', 
-					'united-kingdom-south' => 'UK South', 
-					'united-kingdom-west' => 'UK West', 
-					'us-central' => 'US Central', 
-					'us-east' => 'US East', 
-					'us-east-2' => 'US East 2', 
-					'usgov-arizona' => 'US Gov Arizona', 
-					'usgov-iowa' => 'US Gov Iowa', 
-					'usgov-texas' => 'US Gov Texas', 
-					'usgov-virginia' => 'US Gov Virginia', 
-					'us-north-central' => 'US North Central', 
-					'us-south-central' => 'US South Central', 
-					'us-west' => 'US West', 
-					'us-west-2' => 'US West 2', 
-					'us-west-central' => 'US West Central', 
-					'all' => 'Just give me all options!'
-				);
-				echo form_dropdown('inputRegion', $regions, set_value('inputRegion[]','europe-west'), 'class="form-control" id="inputRegion"');
-				?>
-		  </div>
-		</div>
-		<div class="form-group">
 		  <label class="col-lg-2 control-label">Disk Type</label>
 		  <div class="col-lg-10">
 			<div class="radio">
@@ -174,6 +130,50 @@ echo form_open(base_url()."vmchooser/disk", $attributes);
 					'INR' => 'Indian Rupee'
 				);
 				echo form_dropdown('inputCurrency', $currency, set_value('inputCurrency[]','EUR'), 'class="form-control" id="inputCurrency"');
+				?>
+		  </div>
+		</div>
+		<div class="form-group">
+		  <label class="col-lg-2 control-label">Region</label>
+		  <div class="col-lg-10">
+			
+			<?php 
+				$regions = array(
+					'asia-pacific-east' => 'Asia Pacific East', 
+					'asia-pacific-southeast' => 'Asia Pacific South-East', 
+					'australia-east' => 'Australia East', 
+					'australia-southeast' => 'Australia South East',	
+					'brazil-south' => 'Brazil South',	
+					'canada-central' => 'Canada Central',	
+					'canada-east' => 'Canada East', 
+					'central-india' => 'India Central', 
+					'west-india' => 'India West',
+					'south-india' => 'India South',
+					'europe-north' => 'Europe North',	
+					'europe-west' => 'Europe West', 
+					'germany-central' => 'Germany Central', 
+					'germany-northeast' => 'Germany North East', 
+					'japan-east' => 'Japan East', 
+					'japan-west' => 'Japan West', 
+					'korea-central' => 'Korea Central', 
+					'korea-south' => 'Korea South', 
+					'united-kingdom-south' => 'UK South', 
+					'united-kingdom-west' => 'UK West', 
+					'us-central' => 'US Central', 
+					'us-east' => 'US East', 
+					'us-east-2' => 'US East 2', 
+					'usgov-arizona' => 'US Gov Arizona', 
+					'usgov-iowa' => 'US Gov Iowa', 
+					'usgov-texas' => 'US Gov Texas', 
+					'usgov-virginia' => 'US Gov Virginia', 
+					'us-north-central' => 'US North Central', 
+					'us-south-central' => 'US South Central', 
+					'us-west' => 'US West', 
+					'us-west-2' => 'US West 2', 
+					'us-west-central' => 'US West Central', 
+					'all' => 'Just give me all options!'
+				);
+				echo form_dropdown('inputRegion', $regions, set_value('inputRegion[]','europe-west'), 'class="form-control" id="inputRegion"');
 				?>
 		  </div>
 		</div>
