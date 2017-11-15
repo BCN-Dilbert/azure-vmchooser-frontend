@@ -331,10 +331,10 @@ class Vmchooser extends CI_Controller {
 			$ssd = $this->security->xss_clean($_POST["ssd"]);
 			switch ($ssd) {
 				case "Yes":
-					$ssd = "premium";
+					$ssd = "yes";
 					break;
 				case "No":
-					$ssd = "standard";
+					$ssd = "no";
 					break;
 				case "All":
 					$ssd = "all";
