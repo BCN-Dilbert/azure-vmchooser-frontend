@@ -24,7 +24,12 @@ if (isset($results)) {
 	);
 	$CI->table->set_template($template);
 	print_r($results);
-	echo $CI->table->generate($results);
+
+	foreach ($results as $key => $value) {
+    $this->table->add_row($key,$value);
+  }
+
+	echo $CI->table->generate();
 
 }
 
