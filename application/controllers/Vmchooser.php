@@ -309,22 +309,8 @@ class Vmchooser extends CI_Controller {
 		$telemetryClient->trackEvent('Index : Validation');
 
 		$this->load->library('form_validation');
-		$ssd = $this->security->xss_clean($_POST["ssd"]);
-		switch ($ssd) {
-			case "Yes":
-				$ssd = "premium";
-				break;
-			case "No":
-				$ssd = "standard";
-				break;
-			case "All":
-				$ssd = "all";
-			default:
-			   //echo "Something went wrong :-(";
-		}
 		$this->form_validation->set_rules('inputRegion', 'Azure Region', 'alpha_dash');
 		$this->form_validation->set_rules('inputCurrency', 'Currency', 'alpha_dash');
-		$this->form_validation->set_rules('inputTier', 'Disk Tier', 'alpha_dash');
 		$this->form_validation->set_rules('inputData', 'Minimum disk capacity (GB)', 'numeric');
 		$this->form_validation->set_rules('inputIops', 'Minimum IOPS (IO/s)', 'numeric');
 		$this->form_validation->set_rules('inputThroughput', 'Minimum throughput / speed (MB/s)', 'numeric');
@@ -342,16 +328,28 @@ class Vmchooser extends CI_Controller {
 		{
 			// Generate Query
 			$this->load->helper('security');
+			$ssd = $this->security->xss_clean($_POST["ssd"]);
+			switch ($ssd) {
+				case "Yes":
+					$ssd = "premium";
+					break;
+				case "No":
+					$ssd = "standard";
+					break;
+				case "All":
+					$ssd = "all";
+				default:
+				   //echo "Something went wrong :-(";
+			}
 			$inputRegion = $this->security->xss_clean($_POST["inputRegion"]);
 			$inputCurrency = $this->security->xss_clean($_POST["inputCurrency"]);
-			$inputTier = $this->security->xss_clean($_POST["inputTier"]);;
 			$inputNics = $this->security->xss_clean($_POST["inputNics"]);
 			$inputData = $this->security->xss_clean($_POST["inputData"]);
 			$inputIops = $this->security->xss_clean($_POST["inputIops"]);
 			$inputThroughput = $this->security->xss_clean($_POST["inputThroughput"]);
 			$inputMaxDisks = $this->security->xss_clean($_POST["inputMaxDisks"]);
 
-			$querysuffix = "?tier=$inputTier&region=$inputRegion&iops=$inputIops&data=$inputData&throughput=$inputThroughput&maxdisks=$inputMaxDisks";
+			$querysuffix = "?tier=$ssd&region=$inputRegion&iops=$inputIops&data=$inputData&throughput=$inputThroughput&maxdisks=$inputMaxDisks";
 			$telemetryClient->trackEvent('Index : API Call');
 			
 			// Do API Call
