@@ -53,7 +53,7 @@ echo form_open(base_url()."vmchooser/disk", $attributes);
   <div class="tab-pane fade active in" id="basic">
   
 	<fieldset>
-		<legend>Basic requirements for your virtual machine</legend>
+		<legend>Basic requirements for your disk configuration</legend>
 		<div class="form-group">
 		  <label class="col-lg-2 control-label">Disk Type</label>
 		  <div class="col-lg-10">
