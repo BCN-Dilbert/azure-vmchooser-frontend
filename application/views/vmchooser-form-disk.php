@@ -160,7 +160,6 @@ echo form_open(base_url(), $attributes);
 			<input type="text" class="form-control" name="inputThroughput" id="inputThroughput" value="<?php echo set_value('inputThroughput[]'); ?>" placeholder="What's the minimum throughput (in MB) for this disk config?" autocomplete="off">
 		  </div>
 		</div>    
-  </div>
   
 	</fieldset>
 	
