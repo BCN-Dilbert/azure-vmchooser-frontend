@@ -349,7 +349,7 @@ class Vmchooser extends CI_Controller {
 			$inputThroughput = $this->security->xss_clean($_POST["inputThroughput"]);
 			$inputMaxDisks = $this->security->xss_clean($_POST["inputMaxDisks"]);
 
-			$querysuffix = "?tier=$ssd&region=$inputRegion&iops=$inputIops&data=$inputData&throughput=$inputThroughput&maxdisks=$inputMaxDisks";
+			$querysuffix = "?ssd=$ssd&region=$inputRegion&iops=$inputIops&data=$inputData&throughput=$inputThroughput&maxdisks=$inputMaxDisks";
 			$telemetryClient->trackEvent('Index : API Call');
 			
 			// Do API Call
