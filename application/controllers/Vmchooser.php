@@ -318,7 +318,7 @@ class Vmchooser extends CI_Controller {
 				$ssd = "standard";
 				break;
 			case "All":
-				$ssd = "all";"
+				$ssd = "all";
 			default:
 			   //echo "Something went wrong :-(";
 		}
