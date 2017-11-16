@@ -32,6 +32,7 @@ class Vmchooser extends CI_Controller {
 		$this->form_validation->set_rules('inputRegion', 'Azure Region', 'alpha_dash');
 		$this->form_validation->set_rules('inputCurrency', 'Currency', 'alpha_dash');
 		$this->form_validation->set_rules('inputTier', 'VM Tier', 'alpha_dash');
+		$this->form_validation->set_rules('inputContract', 'Contract', 'alpha_dash');
 		$this->form_validation->set_rules('inputAcu', 'ACU Value', 'numeric');
 		$this->form_validation->set_rules('inputHt', 'Hyperthreaded', 'alpha_dash');
 		$this->form_validation->set_rules('inputCores', 'Number of Cores', 'numeric');
@@ -71,6 +72,7 @@ class Vmchooser extends CI_Controller {
 				   //echo "Something went wrong :-(";
 			}
 			$inputRegion = $this->security->xss_clean($_POST["inputRegion"]);
+			$inputContract = $this->security->xss_clean($_POST["inputContract"]);
 			$inputCurrency = $this->security->xss_clean($_POST["inputCurrency"]);
 			$inputTier = $this->security->xss_clean($_POST["inputTier"]);
 			$inputAcu = $this->security->xss_clean($_POST["inputAcu"]);
@@ -97,7 +99,7 @@ class Vmchooser extends CI_Controller {
 			$inputSaps2tier = $this->security->xss_clean($_POST["inputSaps2tier"]);
 			$inputSaps3tier = $this->security->xss_clean($_POST["inputSaps3tier"]);
 			$inputResults = $this->security->xss_clean($_POST["inputResults"]);
-			$querysuffix = "?maxresults=$inputResults&acu=$inputAcu&ht=$inputHt&tier=$inputTier&region=$inputRegion&pcores=$inputPcores&cores=$inputCores&memory=$inputMemory&iops=$inputIops&data=$inputData&temp=$inputTemp&throughput=$inputThroughput&nics=$inputNics&ssd=$ssd&avgcpupeak=$inputAvgcpupeak&avgmempeak=$inputAvgmempeak&currency=$inputCurrency";
+			$querysuffix = "?contract=$inputContract&maxresults=$inputResults&acu=$inputAcu&ht=$inputHt&tier=$inputTier&region=$inputRegion&pcores=$inputPcores&cores=$inputCores&memory=$inputMemory&iops=$inputIops&data=$inputData&temp=$inputTemp&throughput=$inputThroughput&nics=$inputNics&ssd=$ssd&avgcpupeak=$inputAvgcpupeak&avgmempeak=$inputAvgmempeak&currency=$inputCurrency";
 			
 			if ((!empty($inputSaps2tier) AND !empty(inputSaps3tier)) OR ($hana == Yes)) {
 				$sapsuffix = "&saps2t=$inputSaps2tier&saps3t=$inputMemory&iops=$inputSaps3tier&hana=$hana";
