@@ -203,19 +203,19 @@ echo form_open(base_url(), $attributes);
 			<div class="radio">
 			  <label>
 				<input type="radio" name="inputContract" id="optionsRadios1" value="PAYG" <?php echo  set_radio('inputContract', 'PAYG', TRUE); ?>>
-				Standard
+				Pay-As-You-Go
 			  </label>
 			</div>
 			<div class="radio">
 			  <label>
 				<input type="radio" name="inputContract" id="optionsRadios2" value="RI1Y" <?php echo  set_radio('inputContract', 'RI1Y', FALSE); ?>>
-				Low Priority
+				Reserved Instances - 1 Year
 			  </label>
 			</div>
 			<div class="radio">
 			  <label>
 				<input type="radio" name="inputContract" id="optionsRadios2" value="RI3Y" <?php echo  set_radio('inputContract', 'RI3Y', FALSE); ?>>
-				Basic
+				Reserved Instances - 3 Years
 			  </label>
 			</div>
 		  </div>
