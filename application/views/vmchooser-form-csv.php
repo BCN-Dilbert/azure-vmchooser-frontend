@@ -20,7 +20,7 @@ if ($message <> "") {
         <div class="row">
           <div class="col-lg-12">
             <div class="page-header">
-              <h1 id="containers">CSV Upload</h1>
+              <h1 id="containers">Bulk Mapping : Let VMchooser map for you!</h1>
             </div>
             <div class="bs-component">
               <div class="jumbotron">

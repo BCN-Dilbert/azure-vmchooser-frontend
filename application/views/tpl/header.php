@@ -30,7 +30,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <li><a href="<?php echo base_url()."vmchooser/disk/"; ?>">Disk Config</a></li>
       </ul>
 	    <ul class="nav navbar-nav">
-        <li><a href="<?php echo base_url()."vmchooser/csv/"; ?>">CSV Upload</a></li>
+        <li><a href="<?php echo base_url()."vmchooser/csv/"; ?>">Bulk Mapping</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
           <li><a href="https://vmchooser.portal.azure-api.net/">For Developers (API)</a></li>
