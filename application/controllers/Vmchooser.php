@@ -48,6 +48,7 @@ class Vmchooser extends CI_Controller {
 		$this->form_validation->set_rules('inputSaps2tier', 'SAPS 2-Tier', 'numeric');
 		$this->form_validation->set_rules('inputSaps3tier', 'SAPS 3-Tier', 'numeric');
 		$this->form_validation->set_rules('inputResults', 'Max Results', 'less_than_equal_to[100]');
+		$this->form_validation->set_rules('inputBurstable', 'Burstable', 'alpha_dash');
 
 		if ($this->form_validation->run() == FALSE)
 		{
@@ -87,6 +88,7 @@ class Vmchooser extends CI_Controller {
 			$inputTemp = $this->security->xss_clean($_POST["inputTemp"]);
 			$inputAvgcpupeak = $this->security->xss_clean($_POST["inputAvgcpupeak"]);
 			$inputAvgmempeak = $this->security->xss_clean($_POST["inputAvgmempeak"]);
+			$inputBurstable = $this->security->xss_clean($_POST["inputBurstable"]);
 			$hana = $this->security->xss_clean($_POST["hana"]);
 			switch ($hana) {
 				case "Yes":
@@ -99,7 +101,7 @@ class Vmchooser extends CI_Controller {
 			$inputSaps2tier = $this->security->xss_clean($_POST["inputSaps2tier"]);
 			$inputSaps3tier = $this->security->xss_clean($_POST["inputSaps3tier"]);
 			$inputResults = $this->security->xss_clean($_POST["inputResults"]);
-			$querysuffix = "?contract=$inputContract&maxresults=$inputResults&acu=$inputAcu&ht=$inputHt&tier=$inputTier&region=$inputRegion&pcores=$inputPcores&cores=$inputCores&memory=$inputMemory&iops=$inputIops&data=$inputData&temp=$inputTemp&throughput=$inputThroughput&nics=$inputNics&ssd=$ssd&avgcpupeak=$inputAvgcpupeak&avgmempeak=$inputAvgmempeak&currency=$inputCurrency";
+			$querysuffix = "?burstable=$inputBurstable&contract=$inputContract&maxresults=$inputResults&acu=$inputAcu&ht=$inputHt&tier=$inputTier&region=$inputRegion&pcores=$inputPcores&cores=$inputCores&memory=$inputMemory&iops=$inputIops&data=$inputData&temp=$inputTemp&throughput=$inputThroughput&nics=$inputNics&ssd=$ssd&avgcpupeak=$inputAvgcpupeak&avgmempeak=$inputAvgmempeak&currency=$inputCurrency";
 			
 			if ((!empty($inputSaps2tier) AND !empty(inputSaps3tier)) OR ($hana == Yes)) {
 				$sapsuffix = "&saps2t=$inputSaps2tier&saps3t=$inputMemory&iops=$inputSaps3tier&hana=$hana";
