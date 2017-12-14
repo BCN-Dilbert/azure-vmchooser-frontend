@@ -1,6 +1,6 @@
 VM Name,Region,Cores,Memory (GB),SSD [Yes/No],NICs,Max Disk Size (TB),IOPS,Throughput (MB/s),Min Temp Disk Size (GB),Peak CPU Usage (%),Peak Memory Usage (%),Currency,Contract,Burstable
 My Little VM,europe-north,2,4,No,1,1,500,30,5,100,100,EUR,payg,No
-My Large VM,europe-west,8,16,Yes,4,4,2500,160,250,100,100,USD,payg,Yes
-My Little Rightsized VM,europe-north,2,4,No,1,1,500,30,5,100,65,GBP,ri1y,All
+My Large VM,europe-west,8,16,Yes,4,4,2500,160,250,100,100,USD,payg,All
+My Little Rightsized VM,europe-north,2,4,No,1,1,500,30,5,100,65,GBP,ri1y,Yes
 My Large Rightsized VM,europe-west,8,16,Yes,4,4,2500,160,250,100,65,JPY,ri1y,No
-My Large Labo VM,united-kingdom-south,8,16,All,4,4,2500,160,250,100,65,CAD,ri3y,Yes
+My Large Labo VM,united-kingdom-south,8,16,All,4,4,2500,160,250,100,65,CAD,ri3y,All
