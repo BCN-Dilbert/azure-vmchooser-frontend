@@ -7,7 +7,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
 if (isset($results)) { 
+	print_r($results);
 	?>
+
+	
 	
 	<div class="page-header">
 	  <h1 id="navbar">VMsize Details</h1>
