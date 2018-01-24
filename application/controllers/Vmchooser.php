@@ -244,11 +244,14 @@ class Vmchooser extends CI_Controller {
 		// Prep Results
 		$array = json_decode($json);
 		$i=0;
+		print_r($array);
 		foreach ($array as $result) {
 			$temp = (array) $result;
 			$results[$i] = $temp;
 			$i++;
 		}
+
+		print_r($results);
 	
 		// OK
 		$data['results'] = $results[0];
