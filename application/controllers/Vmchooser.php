@@ -238,6 +238,8 @@ class Vmchooser extends CI_Controller {
 			//print_r($responseBodyAsString);
 			//echo "Something went wrong :-(";
 		}
+
+		print_r($json);
 		
 		// Prep Results
 		$array = json_decode($json);
