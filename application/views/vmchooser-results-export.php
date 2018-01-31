@@ -1,4 +1,5 @@
 <?php 
+$this->load->helper('download');
 //$this->output->set_content_type('text/csv');
 defined('BASEPATH') OR exit('No direct script access allowed');
 // https://stackoverflow.com/questions/3933668/convert-array-into-csv
