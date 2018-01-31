@@ -1,5 +1,6 @@
-<?php header('Content-type: text/csv');
-header('Content-Disposition: attachment; filename="' . $csvfile . '"');
+<?php print_r("bootstrap"); 
+//header('Content-type: text/csv');
+//header('Content-Disposition: attachment; filename="' . $csvfile . '"');
 print_r("header");
 defined('BASEPATH') OR exit('No direct script access allowed');
 // https://stackoverflow.com/questions/3933668/convert-array-into-csv
