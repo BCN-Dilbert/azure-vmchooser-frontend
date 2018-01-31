@@ -1,5 +1,5 @@
-<?php print_r("bootstrap"); 
-//header('Content-type: text/csv');
+<?php header('Content-type: text/csv');
+print_r("bootstrap"); 
 //header('Content-Disposition: attachment; filename="' . $csvfile . '"');
 print_r("header");
 defined('BASEPATH') OR exit('No direct script access allowed');
