@@ -173,7 +173,7 @@ class Vmchooser extends CI_Controller {
 		
 		echo "load lib";
 		$this->load->library('guzzle');
-		$vmchooserapikey = getenv('VMCHOOSERAPIKEY');	
+		$vmchooserapikey = getenv('VMCHOOSERAPIKEY');
 		echo "new client";
 		$client = new GuzzleHttp\Client(['headers' => ['Ocp-Apim-Subscription-Key' => $vmchooserapikey]]);
 		try {
