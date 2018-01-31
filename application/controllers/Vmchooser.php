@@ -174,6 +174,7 @@ class Vmchooser extends CI_Controller {
 		echo "load lib";
 		$this->load->library('guzzle');
 		$vmchooserapikey = getenv('VMCHOOSERAPIKEY');	
+		echo "new client";
 		$client = new GuzzleHttp\Client(['headers' => ['Ocp-Apim-Subscription-Key' => $vmchooserapikey]]);
 		try {
 			echo "try";
@@ -186,7 +187,7 @@ class Vmchooser extends CI_Controller {
 		echo "api call end";
 		
 		// Prep Results
-		echo "prep results";
+		echo "prepresults";
 		$array = json_decode($json);
 		$i=0;
 		foreach ($array as $result) {
