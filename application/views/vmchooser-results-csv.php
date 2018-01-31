@@ -37,7 +37,7 @@ if (isset($results)) {
 
 	<div class="alert alert-dismissible alert-info">
 	<button type="button" class="close" data-dismiss="alert">&times;</button>
-	<strong>Export : </strong> Download results as <a href="<?php echo base_url()."/vmchooser/results/".$csvfile."/csv/"; ?>" target="_blank" class="alert-link">CSV</a> .</br>
+	<strong>Export : </strong> Download results as <a href="<?php echo base_url()."vmchooser/results/".$csvfile."/csv/"; ?>" target="_blank" class="alert-link">CSV</a> .</br>
 	</div>
 
 	<?php
