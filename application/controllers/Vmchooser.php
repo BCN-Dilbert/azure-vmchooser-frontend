@@ -167,6 +167,7 @@ class Vmchooser extends CI_Controller {
 			die();
 		}
 		
+		echo "api call";
 		$api_url = getenv('VMCHOOSERCSVRESULTS');
 		$api_url = str_replace("{csvfile}", $csvfile, $api_url);
 			
@@ -179,11 +180,10 @@ class Vmchooser extends CI_Controller {
 		} catch (GuzzleHttp\Exception\BadResponseException $e) {
 			$response = $e->getResponse();
 			$responseBodyAsString = $response->getBody()->getContents();
-			//print_r($responseBodyAsString);
-			//echo "Something went wrong :-(";
 		}
 		
 		// Prep Results
+		echo "prep results";
 		$array = json_decode($json);
 		$i=0;
 		foreach ($array as $result) {
@@ -197,14 +197,15 @@ class Vmchooser extends CI_Controller {
 	
 		// OK
 		$data['csvfile'] = $csvfile;
-		$data['results'] = $results;
-		$this->load->helper(array('url'));
+		$data['results'] = $results;	
 
 		if ($format == "") {
+			$this->load->helper(array('url'));
 			$this->load->view('tpl/header');	
 			$this->load->view('vmchooser-results-csv',$data);
 			$this->load->view('tpl/footer');
 		} else {
+			echo "format";
 			$this->load->view('vmchooser-results-export',$data);
 		}
 	}
