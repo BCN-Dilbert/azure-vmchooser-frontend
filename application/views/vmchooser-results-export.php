@@ -1,5 +1,6 @@
 <?php header('Content-type: text/csv');
 header('Content-Disposition: attachment; filename="' . $csvfile . '"');
+print_r("header");
 defined('BASEPATH') OR exit('No direct script access allowed');
 // https://stackoverflow.com/questions/3933668/convert-array-into-csv
 function arrayToCsv( array &$fields, $delimiter = ',', $enclosure = '"', $encloseAll = false, $nullToMysqlNull = false ) {
@@ -24,7 +25,6 @@ function arrayToCsv( array &$fields, $delimiter = ',', $enclosure = '"', $enclos
 
     return implode( $delimiter, $output );
 }
-
 if (isset($results)) { 
 
 	$header = array();
@@ -40,5 +40,4 @@ if (isset($results)) {
 	}
 
 }
-
 ?>
