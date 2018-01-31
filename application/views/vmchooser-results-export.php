@@ -33,7 +33,6 @@ if (isset($results)) {
 	foreach($results[0] as $key => $value) {
 		$header[] = $key;
 	}
-    echo "test";
 	print_r(arrayToCsv($header));
 	echo PHP_EOL;
 	foreach($results as $row) {
@@ -42,5 +41,5 @@ if (isset($results)) {
 	}
 
 }
-ob_end_clean();
+
 ?>
