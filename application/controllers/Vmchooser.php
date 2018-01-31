@@ -170,17 +170,20 @@ class Vmchooser extends CI_Controller {
 		echo "api call";
 		$api_url = getenv('VMCHOOSERCSVRESULTS');
 		$api_url = str_replace("{csvfile}", $csvfile, $api_url);
-			
+		
+		echo "load lib";
 		$this->load->library('guzzle');
 		$vmchooserapikey = getenv('VMCHOOSERAPIKEY');	
-		$client     = new GuzzleHttp\Client(['headers' => ['Ocp-Apim-Subscription-Key' => $vmchooserapikey]]);
+		$client = new GuzzleHttp\Client(['headers' => ['Ocp-Apim-Subscription-Key' => $vmchooserapikey]]);
 		try {
+			echo "try";
 			$response = $client->request( 'POST', $api_url);
 			$json =  $response->getBody()->getContents();
 		} catch (GuzzleHttp\Exception\BadResponseException $e) {
 			$response = $e->getResponse();
 			$responseBodyAsString = $response->getBody()->getContents();
 		}
+		echo "api call end";
 		
 		// Prep Results
 		echo "prep results";
