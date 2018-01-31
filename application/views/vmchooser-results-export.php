@@ -37,7 +37,7 @@ if (isset($results)) {
 		//print_r(arrayToCsv($row));
 		//echo PHP_EOL;
     }
-    force_download($csvfile, implode(",", $results));
+    force_download($csvfile, arrayToCsv($results));
 
 }
 ?>
