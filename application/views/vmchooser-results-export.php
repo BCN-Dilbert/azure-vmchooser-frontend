@@ -1,7 +1,5 @@
-<?php header('Content-type: text/csv');
-print_r("bootstrap"); 
-//header('Content-Disposition: attachment; filename="' . $csvfile . '"');
-print_r("header");
+<?php 
+//$this->output->set_content_type('text/csv');
 defined('BASEPATH') OR exit('No direct script access allowed');
 // https://stackoverflow.com/questions/3933668/convert-array-into-csv
 function arrayToCsv( array &$fields, $delimiter = ',', $enclosure = '"', $encloseAll = false, $nullToMysqlNull = false ) {
@@ -32,13 +30,14 @@ if (isset($results)) {
 	foreach($results[0] as $key => $value) {
 		$header[] = $key;
 	}
-    print_r("start");
-	print_r(arrayToCsv($header));
-	echo PHP_EOL;
+	//print_r(arrayToCsv($header));
+	//echo PHP_EOL;
 	foreach($results as $row) {
-		print_r(arrayToCsv($row));
-		echo PHP_EOL;
-	}
+		//print_r(arrayToCsv($row));
+		//echo PHP_EOL;
+    }
+    
+    force_download($csvfile, $results);
 
 }
 ?>
