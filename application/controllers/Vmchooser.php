@@ -150,6 +150,7 @@ class Vmchooser extends CI_Controller {
 	
 	public function results() 
 	{
+		ob_start();
 		$this->load->helper('security');
 		if ($this->uri->segment(3) === FALSE)
 		{
@@ -195,7 +196,9 @@ class Vmchooser extends CI_Controller {
 		// OK
 		$data['csvfile'] = $csvfile;
 		$data['results'] = $results;	
+		echo "this should not be displayed";
 
+		ob_end_clean();
 		if ($format == "") {
 			$this->load->helper(array('url'));
 			$this->load->view('tpl/header');	

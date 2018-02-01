@@ -25,8 +25,6 @@ function arrayToCsv( array &$fields, $delimiter = ',', $enclosure = '"', $enclos
 }
 
 if (isset($results)) {
-    ob_end_clean();
-    echo "start";
     header('Content-type: text/csv');
     header('Content-Disposition: attachment; filename="' . $csvfile . '"'); 
 	$header = array();
