@@ -22,7 +22,7 @@
  * @link      https://github.com/azure/azure-storage-php
  */
 
-namespace MicrosoftAzure\Storage\Tests\framework;
+namespace MicrosoftAzure\Storage\Tests\Framework;
 
 use MicrosoftAzure\Storage\Table\Models\EdmType;
 use MicrosoftAzure\Storage\Table\Models\Entity;
@@ -836,6 +836,18 @@ class TestResources
         return $sample;
     }
 
+    public static function createMessageSample()
+    {
+        $sample = array();
+        $sample['QueueMessage']['MessageId']       = '5974b586-0df3-4e2d-ad0c-18e3892bfca2';
+        $sample['QueueMessage']['InsertionTime']   = 'Fri, 09 Oct 2009 21:04:30 GMT';
+        $sample['QueueMessage']['ExpirationTime']  = 'Fri, 16 Oct 2009 21:04:30 GMT';
+        $sample['QueueMessage']['PopReceipt']      = 'YzQ4Yzg1MDItYTc0Ny00OWNjLTkxYTUtZGM0MDFiZDAwYzEw';
+        $sample['QueueMessage']['TimeNextVisible'] = 'Fri, 09 Oct 2009 23:29:20 GMT';
+
+        return $sample;
+    }
+
     public static function listMessagesMultipleMessagesSample()
     {
         $sample = array();
@@ -1230,7 +1242,9 @@ class TestResources
                     'x-ms-blob-type' => 'BlockBlob',
                     'x-ms-lease-status' => 'locked',
                     'x-ms-server-encrypted' => 'false',
-                    'x-ms-request-server-encrypted' => 'true'
+                    'x-ms-request-server-encrypted' => 'true',
+                    'x-ms-incremental-copy' => 'true',
+                    'x-ms-copy-destination-snapshot'=> '2017-09-07T06:57:06.0830478Z'
                 )
             )
         );
@@ -1502,7 +1516,7 @@ class TestResources
         $signedIP = ""
     ) {
         if ($signedExpiry == "") {
-            $signedExpiry = (self::getRandomLaterTime()->format('Y-m-d\TH:i:s\Z'));
+            $signedExpiry = Utilities::isoDate(self::getRandomLaterTime());
         }
 
         if ($signedStart == "") {
@@ -1540,7 +1554,7 @@ class TestResources
         $contentType = ""
     ) {
         if ($signedExpiry == "") {
-            $signedExpiry = (self::getRandomLaterTime()->format('Y-m-d\TH:i:s\Z'));
+            $signedExpiry = Utilities::isoDate(self::getRandomLaterTime());
         }
 
         if ($signedStart == "") {
@@ -1581,11 +1595,11 @@ class TestResources
         $endingRowKey = ""
     ) {
         if ($signedExpiry == "") {
-            $signedExpiry = (self::getRandomLaterTime()->format('Y-m-d\TH:i:s\Z'));
+            $signedExpiry = Utilities::isoDate(self::getRandomLaterTime());
         }
 
         if ($signedStart == "") {
-            $signedStart = (self::getRandomEarlierTime()->format('Y-m-d\TH:i:s\Z'));
+            $signedStart = Utilities::isoDate(self::getRandomEarlierTime());
         }
 
         if ($signedIP == "") {
@@ -1616,11 +1630,11 @@ class TestResources
         $signedIP = ""
     ) {
         if ($signedExpiry == "") {
-            $signedExpiry = (self::getRandomLaterTime()->format('Y-m-d\TH:i:s\Z'));
+            $signedExpiry = Utilities::isoDate(self::getRandomLaterTime());
         }
 
         if ($signedStart == "") {
-            $signedStart = (self::getRandomEarlierTime()->format('Y-m-d\TH:i:s\Z'));
+            $signedStart = Utilities::isoDate(self::getRandomEarlierTime());
         }
 
         if ($signedIP == "") {

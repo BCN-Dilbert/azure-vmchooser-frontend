@@ -22,7 +22,7 @@
  * @link      https://github.com/azure/azure-storage-php
  */
 
-namespace MicrosoftAzure\Storage\Tests\functional\File;
+namespace MicrosoftAzure\Storage\Tests\Functional\File;
 
 use MicrosoftAzure\Storage\Tests\Framework\TestResources;
 use MicrosoftAzure\Storage\File\Models\GetFileOptions;
@@ -1553,7 +1553,11 @@ class FileServiceFunctionalTest extends FunctionalTestBase
         // Make sure there is something to test
         $dataSize = 512;
         $content = FileServiceFunctionalTestData::getRandomBytes($dataSize);
-        $this->restProxy->createFileFromContent($share, $file, $content);
+        $createFileOptions = new CreateFileOptions();
+        if ($options && $options->getRangeGetContentMD5()) {
+            $createFileOptions->setContentMD5('MDAwMDAwMDA=');
+        }
+        $this->restProxy->createFileFromContent($share, $file, $content, $createFileOptions);
 
         $metadata = FileServiceFunctionalTestData::getNiceMetadata();
         $sbmd = $this->restProxy->setFileMetadata($share, $file, $metadata);
@@ -1618,10 +1622,8 @@ class FileServiceFunctionalTest extends FunctionalTestBase
         );
 
         if ($options->getRangeGetContentMD5()) {
-            // Compute the MD5 from the stream.
-            $md5 = Utilities::calculateContentMD5($content);
             $this->assertEquals(
-                $md5,
+                'MDAwMDAwMDA=',
                 $res->getProperties()->getContentMD5(),
                 'asked for MD5, result->getProperties()->getContentMD5'
             );
@@ -1973,7 +1975,7 @@ class FileServiceFunctionalTest extends FunctionalTestBase
             $getOptions->setRangeGetContentMD5(true);
             $result = $this->restProxy->getFile($share, $file, $getOptions);
             $actualContent = stream_get_contents($result->getContentStream());
-            $actualMD5 = $result->getProperties()->getContentMD5();
+            $actualMD5 = $result->getProperties()->getRangeContentMD5();
             //Validate
             $this->assertEquals(Utilities::calculateContentMD5($content), $actualMD5);
             $this->assertEquals($content, $actualContent);

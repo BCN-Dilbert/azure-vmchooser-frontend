@@ -22,11 +22,11 @@
  * @link      https://github.com/azure/azure-storage-php
  */
 
-namespace MicrosoftAzure\Storage\Tests\functional\File;
+namespace MicrosoftAzure\Storage\Tests\Functional\File;
 
 use MicrosoftAzure\Storage\Tests\Framework\TestResources;
 use MicrosoftAzure\Storage\File\Models\AccessCondition;
-use MicrosoftAzure\Storage\File\Models\ShareAcl;
+use MicrosoftAzure\Storage\File\Models\ShareACL;
 use MicrosoftAzure\Storage\File\Models\GetFileOptions;
 use MicrosoftAzure\Storage\File\Models\FileProperties;
 use MicrosoftAzure\Storage\File\Models\FileServiceOptions;
@@ -484,10 +484,10 @@ class FileServiceFunctionalTestData
         $past = new \DateTime("01/01/2010");
         $future = new \DateTime("01/01/2020");
 
-        $acl = new ShareAcl();
+        $acl = new ShareACL();
         array_push($ret, $acl);
 
-        $acl = new ShareAcl();
+        $acl = new ShareACL();
         $acl->addSignedIdentifier('123', $past, $future, 'rw');
         array_push($ret, $acl);
 
