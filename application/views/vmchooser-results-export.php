@@ -31,12 +31,17 @@ if (isset($results)) {
 	foreach($results[0] as $key => $value) {
 		$header[] = $key;
 	}
-	print_r(arrayToCsv($header));
-	echo PHP_EOL;
+	//print_r(arrayToCsv($header));
+    //echo PHP_EOL;
+    $data = arrayToCsv($header);
 	foreach($results as $row) {
-		print_r(arrayToCsv($row));
-		echo PHP_EOL;
-	}
+		//print_r(arrayToCsv($row));
+        //echo PHP_EOL;
+        $data .= arrayToCsv($row);
+    }
+    
+    $this->load->helper('download');
+    force_download($csvfile, $data);
 
 }
 
