@@ -42,7 +42,7 @@ if (isset($results)) {
     
     $this->load->helper('download');
     echo "***$data***";
-    force_download($csvfile, $data);
+    force_download($csvfile, "***$data***");
 
 }
 
