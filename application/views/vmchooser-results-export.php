@@ -25,6 +25,7 @@ function arrayToCsv( array &$fields, $delimiter = ',', $enclosure = '"', $enclos
 }
 
 if (isset($results)) {
+    ob_clean();
     header('Content-type: text/csv');
     header('Content-Disposition: attachment; filename="' . $csvfile . '"'); 
 	$header = array();
@@ -39,9 +40,7 @@ if (isset($results)) {
         //echo PHP_EOL;
         $data .= arrayToCsv($row);
     }
-    
     $this->load->helper('download');
-    echo "***$data***";
     force_download($csvfile, "***$data***");
 
 }
