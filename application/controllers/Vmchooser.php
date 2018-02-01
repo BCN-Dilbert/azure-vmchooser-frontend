@@ -167,27 +167,21 @@ class Vmchooser extends CI_Controller {
 			die();
 		}
 		
-		echo "api call";
 		$api_url = getenv('VMCHOOSERCSVRESULTS');
 		$api_url = str_replace("{csvfile}", $csvfile, $api_url);
 		
-		echo "load lib";
 		$this->load->library('guzzle');
 		$vmchooserapikey = getenv('VMCHOOSERAPIKEY');
-		echo "new client";
 		$client = new GuzzleHttp\Client(['headers' => ['Ocp-Apim-Subscription-Key' => $vmchooserapikey]]);
 		try {
-			echo "try";
 			$response = $client->request( 'POST', $api_url);
 			$json =  $response->getBody()->getContents();
 		} catch (GuzzleHttp\Exception\BadResponseException $e) {
 			$response = $e->getResponse();
 			$responseBodyAsString = $response->getBody()->getContents();
 		}
-		echo "api call end";
 		
 		// Prep Results
-		echo "prepresults";
 		$array = json_decode($json);
 		$i=0;
 		foreach ($array as $result) {
@@ -209,7 +203,6 @@ class Vmchooser extends CI_Controller {
 			$this->load->view('vmchooser-results-csv',$data);
 			$this->load->view('tpl/footer');
 		} else {
-			echo "format";
 			$this->load->view('vmchooser-results-export',$data);
 		}
 	}
