@@ -150,7 +150,6 @@ class Vmchooser extends CI_Controller {
 	
 	public function results() 
 	{
-		echo "test";
 		$this->load->helper('security');
 		if ($this->uri->segment(3) === FALSE)
 		{
