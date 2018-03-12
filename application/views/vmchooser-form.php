@@ -267,6 +267,29 @@ echo form_open(base_url(), $attributes);
 		  </div>
 		</div>
 		<div class="form-group">
+		  <label class="col-lg-2 control-label">Isolated</label>
+		  <div class="col-lg-10">
+			<div class="radio">
+			  <label>
+				<input type="radio" name="inputIsolated" id="optionsRadios1" value="Yes" <?php echo  set_radio('inputIsolated', 'Yes', FALSE); ?>>
+				Yes
+			  </label>
+			</div>
+			<div class="radio">
+			  <label>
+				<input type="radio" name="inputIsolated" id="optionsRadios2" value="No" <?php echo  set_radio('inputIsolated', 'No', FALSE); ?>>
+				No
+			  </label>
+			</div>
+			<div class="radio">
+			  <label>
+				<input type="radio" name="inputIsolated" id="optionsRadios2" value="All" <?php echo  set_radio('inputIsolated', 'All', TRUE); ?>>
+				Don't care... 
+			  </label>
+			</div>
+		  </div>
+		</div>
+		<div class="form-group">
 		  <label for="inputPcores" class="col-lg-2 control-label">Number of "pCores"</label>
 		  <div class="col-lg-10">
 			<input type="text" class="form-control" name="inputPcores" id="inputPcores"  value="<?php echo set_value('inputPcores[]'); ?>" placeholder="What's the minimum equivalent of physical cores this VM needs?" autocomplete="off">
