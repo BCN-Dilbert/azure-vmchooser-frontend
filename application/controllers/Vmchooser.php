@@ -90,7 +90,7 @@ class Vmchooser extends CI_Controller {
 			$inputAvgcpupeak = $this->security->xss_clean($_POST["inputAvgcpupeak"]);
 			$inputAvgmempeak = $this->security->xss_clean($_POST["inputAvgmempeak"]);
 			$inputBurstable = $this->security->xss_clean($_POST["inputBurstable"]);
-			inputIsolated = $this->security->xss_clean($_POST["inputIsolated"]);
+			$inputIsolated = $this->security->xss_clean($_POST["inputIsolated"]);
 			$hana = $this->security->xss_clean($_POST["hana"]);
 			switch ($hana) {
 				case "Yes":
